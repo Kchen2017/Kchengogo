@@ -6,6 +6,7 @@ import Home from "./components/home/home.vue";
 import Vip from "./components/vip/vip.vue";
 import ShoppingCart from "./components/shoppingCart/shoppingCart.vue";
 import Search from "./components/search/search.vue";
+import NewsList from "./components/news/newsList.vue";
 
 //引入mint-ui
 import MintUi from "mint-ui";
@@ -31,7 +32,8 @@ let router = new VueRouter({
 		{name: "home", path: "/home", component: Home},
 		{name: "vip", path: "/vip", component: Vip},
 		{name: "shoppingCart", path: "/shoppingCart", component: ShoppingCart},
-		{name: "search", path: "/search", component: Search}
+		{name: "search", path: "/search", component: Search},
+		{name: "newsList", path: "/newsList", component: NewsList}
 	]
 });
 
@@ -47,12 +49,20 @@ Vue.prototype.$httpConfig = HttpConfig;
 import MySwipe from "./components/common/mySwipe.vue";
 Vue.component("my-swipe", MySwipe);
 
+//返回导航栏
+import NavBar from "./components/common/navBar.vue";
+Vue.component("nav-bar", NavBar);
+
+//注册时间格式过滤器momentjs插件
+import Moment from "moment";
+Vue.filter("timeTransform", (value) => {
+	return Moment(value).format("YYYY-MM-DD hh:mm:ss");
+});
+
 
 new Vue({
 	router,
 	el: "#app",
-	render: function(c){
-		return c(App);
-	}
+	render: (c) => c(App)
 })
 

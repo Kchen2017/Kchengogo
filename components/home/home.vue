@@ -1,11 +1,11 @@
 <template>
-	<div>
+	<div class="homePage">
 		<my-swipe :swipes= "message"></my-swipe>
 		<div class="mui-content">
 	        <ul class="mui-table-view mui-grid-view mui-grid-9">
-	            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+	            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'newsList'}">
 	                    <span class="mui-icon mui-icon-home"></span>
-	                    <div class="mui-media-body">新闻资讯</div></a></li>
+	                    <div class="mui-media-body">新闻资讯</div></router-link></li>
 	            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
 	                    <span class="mui-icon mui-icon-email"><span class="mui-badge" v-show="false">5</span></span>
 	                    <div class="mui-media-body">图文分享</div></a></li>
@@ -50,6 +50,9 @@ export default {
 </script>
 
 <style>
+	.homePage{
+		margin-top: 40px;
+	}
 	.mui-table-view.mui-grid-view.mui-grid-9 {
 		margin-top: 0px;
 	}

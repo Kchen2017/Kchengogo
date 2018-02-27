@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<!-- 顶端固定 -->
-		<mt-header  title="开启幸福之旅"></mt-header>
+		<mt-header  fixed title="开启幸福之旅"></mt-header>
 		<router-view></router-view>
 		<!-- 底部导航栏 -->
 		<nav class="mui-bar mui-bar-tab">
