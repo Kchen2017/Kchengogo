@@ -3,6 +3,9 @@ import Vue from "vue";
 //引入自定组件
 import App from "./app.vue";
 import Home from "./components/home/home.vue";
+import Vip from "./components/vip/vip.vue";
+import ShoppingCart from "./components/shoppingCart/shoppingCart.vue";
+import Search from "./components/search/search.vue";
 
 //引入mint-ui
 import MintUi from "mint-ui";
@@ -26,9 +29,9 @@ let router = new VueRouter({
 	routes: [
 		{name: "default", path: "/", redirect: "home"},
 		{name: "home", path: "/home", component: Home},
-		{name: "home", path: "/home", component: Home},
-		{name: "home", path: "/home", component: Home},
-		{name: "home", path: "/home", component: Home},
+		{name: "vip", path: "/vip", component: Vip},
+		{name: "shoppingCart", path: "/shoppingCart", component: ShoppingCart},
+		{name: "search", path: "/search", component: Search}
 	]
 });
 
