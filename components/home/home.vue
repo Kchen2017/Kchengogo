@@ -30,17 +30,14 @@
 export default {
 	data(){
 		return {
-			message: [
-				{src: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2639088341,2223755776&fm=27&gp=0.jpg"},
-				{src: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519638060350&di=3705bfd81eda008be353c2b916adc00d&imgtype=0&src=http%3A%2F%2Fpic29.photophoto.cn%2F20131204%2F0034034499213463_b.jpg"},
-				{src: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519638060349&di=5595d51966b19d403486de989561938a&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F140227%2F235111-14022F9410899.jpg"}
-			]
+			message: []
 		}
 	},
 	created(){
-		this.$ajax.get(this.$httpConfig.lunbo)
+		this.$ajax.get(this.$httpConfig.douban)
 		.then(res => {
-			this.message = res.data.message;
+			// console.log(1,res.data.subjects[0].images.small);
+			this.message = res.data.subjects.slice(0,4);
 		})
 		.catch(err => {
 			console.log(err);
