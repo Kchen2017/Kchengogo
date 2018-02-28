@@ -4,7 +4,7 @@
 		<mt-header  fixed title="开启幸福之旅"></mt-header>
 		<router-view></router-view>
 		<!-- 底部导航栏 -->
-		<nav class="mui-bar mui-bar-tab">
+		<nav class="mui-bar mui-bar-tab" ref="nav">
 			<router-link class="mui-tab-item"  :to="{name: 'home'}">
 				<span class="mui-icon icon-icon-test"></span>
 				<span class="mui-tab-label">首页</span>
@@ -26,11 +26,19 @@
 </template>
 
 <script>
+import VueBus from "./components/common/vueBus.js";
 export default {
 	data(){
 		return {
 			
 		}
+	},
+	mounted(){
+		console.log(this.$refs.nav.getBoundingClientRect().height);
+		VueBus.$on("getNavHeight", fn => {
+			console.log(this, "app");
+			fn(this.$refs.nav.getBoundingClientRect().height);
+		})
 	}
 }
 </script>

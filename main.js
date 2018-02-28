@@ -7,7 +7,9 @@ import Vip from "./components/vip/vip.vue";
 import ShoppingCart from "./components/shoppingCart/shoppingCart.vue";
 import Search from "./components/search/search.vue";
 import NewsList from "./components/news/newsList.vue";
-
+import NewsDetail from "./components/news/newsDetail.vue";
+import PicShare from "./components/pic/picShare.vue";
+import PicDetail from "./components/pic/picDetail.vue";
 //引入mint-ui
 import MintUi from "mint-ui";
 Vue.use(MintUi);
@@ -33,7 +35,10 @@ let router = new VueRouter({
 		{name: "vip", path: "/vip", component: Vip},
 		{name: "shoppingCart", path: "/shoppingCart", component: ShoppingCart},
 		{name: "search", path: "/search", component: Search},
-		{name: "newsList", path: "/newsList", component: NewsList}
+		{name: "newsList", path: "/newsList", component: NewsList},
+		{name: "newsDetail", path: "/newsDetail/:newsId", component: NewsDetail},
+		{name: "picShare", path: "/picShare", component: PicShare},
+		{name: "picDetail", path: "/picDetail", component: PicDetail}
 	]
 });
 
@@ -57,6 +62,23 @@ Vue.component("nav-bar", NavBar);
 import Moment from "moment";
 Vue.filter("timeTransform", (value) => {
 	return Moment(value).format("YYYY-MM-DD hh:mm:ss");
+});
+
+//使用axios拦截器设定loading图案
+Axios.interceptors.request.use(function (config) {
+    MintUi.Indicator.open({ spinnerType: 'fading-circle' });
+    return config;
+}, function (error) {
+
+	return Promise.reject(error);
+});
+
+Axios.interceptors.response.use(function (response) {
+	MintUi.Indicator.close()
+	return response;
+}, function (error) {
+
+	return Promise.reject(error);
 });
 
 

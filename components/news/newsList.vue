@@ -5,7 +5,7 @@
         <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom"  :bottom-all-loaded="bottomAllLoaded" :auto-fill="isAutoFill" @bottom-status-change="handleBottomChange" ref="loadmore">
             <ul class="mui-table-view" >
                 <li class="mui-table-view-cell mui-media" v-for="(list, index) in lists" :key="index">
-                    <a>
+                    <router-link :to="{name: 'newsDetail', params: {newsId: index}}">
                         <img class="mui-media-object mui-pull-left"  v-lazy="list.images.small">
                         <div class="mui-media-body">
                             <span v-text="list.title"></span>
@@ -15,7 +15,7 @@
                                 <p>发表时间:{{list.year | timeTransform}}</p>
                             </div>
                         </div>
-                    </a>
+                    </router-link>
                 </li>
             </ul>
            
@@ -23,6 +23,7 @@
     </div>
 </template>
 <script>
+import VueBus from "../common/vueBus.js";
 export default {
     data(){
         return {
@@ -94,8 +95,10 @@ export default {
         }
     },
     mounted(){
-        
-        this.tmplHeight = document.documentElement.clientHeight - 50 - this.$refs.tmpl.getBoundingClientRect().top;
+        VueBus.$emit("getNavHeight", h => {
+            console.log(this, "list");
+            this.tmplHeight = document.documentElement.clientHeight - h - this.$refs.tmpl.getBoundingClientRect().top;
+        }); 
     }
 }
 </script>
