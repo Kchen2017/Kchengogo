@@ -27,6 +27,7 @@
 
 <script>
 import VueBus from "./components/common/vueBus.js";
+import Tools from "./components/common/productsTool.js";
 export default {
 	data(){
 		return {
@@ -46,6 +47,9 @@ export default {
 			}, 1000)
 			
 		})
+	},
+	created(){
+		this.proNum = Tools.totleNum();
 	}
 }
 </script>

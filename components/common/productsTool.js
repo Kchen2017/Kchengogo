@@ -14,18 +14,18 @@ let tool = {
 		this.saveData(items);
 	},
 	saveData(item){
-		locals.setItem("products", JSON.srtingify(item));
+		locals.setItem("products", JSON.stringify(item));
 	},
 	delData(index){
 		let items = this.getDate();
-		item[index] = null;
+		delete items[index];
 		this.saveData(items);
 	},
 	totleNum(){
 		let items = this.getDate();
 		let num = 0;
 		for(let key in items){
-			num += items(ele)
+			num += items[key];
 		}
 		return num;
 	}

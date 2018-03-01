@@ -41,6 +41,7 @@
 </template>
 <script>
 import VueBus from "../common/vueBus.js";
+import Tools from "../common/productsTool.js";
 export default {
     data(){
         return {
@@ -73,6 +74,10 @@ export default {
         addGoods(){
             this.show = true;
             VueBus.$emit("addPro", this.num);
+            Tools.addOrUpdata({
+                id: this.$route.params.goodsId,
+                num: this.num
+            })
         },
         proDes(id){
             this.$router.push({
