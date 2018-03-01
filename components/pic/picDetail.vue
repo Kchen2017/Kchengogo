@@ -8,14 +8,15 @@
             <span>分类：{{content.genres}}</span>
         </div>
         <ul class="mui-table-view mui-grid-view mui-grid-9">
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" v-for="(item, index) in imgdd" :key="index">
-                <img :src="item" alt="">
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" v-for="(item, index) in imgdd" :key="index"  >
+                <img :src="item.src" alt="" @click="$preview.open(index, imgdd)" class="preview-img" height="100">
             </li>
             
         </ul>
         <div class="photo-desc">
             <p v-html="content.desc"></p>
         </div>
+        <comment :artId="picID"></comment>
     </div>
 </template>
 <script>
@@ -23,7 +24,8 @@ export default {
     data(){
         return {
             content: {},
-            imgdd: []
+            imgdd: [],
+            picID: this.$route.query.picId
         }
     },
     created(){
@@ -37,15 +39,23 @@ export default {
         .then(res => {
             let arr = [];
             res.data.subjects.forEach(function(ele, index){
+                let item = {};
+                item.w = 300;
+                item.h = 300;
                 if(index < 4){
-                    arr.push(ele.images.small);
+                    item.src = ele.images.small
+                    arr.push(item);
                 }
             });
             this.imgdd = arr;
+
         })
         .catch(err => {
             console.log("失败", err);
         })
+    },
+    methods: {
+
     }
 }
 </script>

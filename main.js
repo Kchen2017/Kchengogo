@@ -10,15 +10,25 @@ import NewsList from "./components/news/newsList.vue";
 import NewsDetail from "./components/news/newsDetail.vue";
 import PicShare from "./components/pic/picShare.vue";
 import PicDetail from "./components/pic/picDetail.vue";
+import GoodList from "./components/goods/goodList.vue";
+import GoodsDetail from "./components/goods/goodsDetail.vue";
+import ProComment from "./components/goods/proComment.vue";
+
 //引入mint-ui
 import MintUi from "mint-ui";
 Vue.use(MintUi);
 import "mint-ui/lib/style.css";
 
-
-
 //引入mui的样式
 import "./static/vendor/mui/dist/css/mui.css";
+
+//引入vue-preview插件  图片预览
+import VuePreview from "vue-preview";
+Vue.use(VuePreview);
+
+//引入Qs插件
+import Qs from "qs";
+Vue.prototype.$qs = Qs;
 
 //配置axios
 import Axios from "axios";
@@ -38,7 +48,10 @@ let router = new VueRouter({
 		{name: "newsList", path: "/newsList", component: NewsList},
 		{name: "newsDetail", path: "/newsDetail/:newsId", component: NewsDetail},
 		{name: "picShare", path: "/picShare", component: PicShare},
-		{name: "picDetail", path: "/picDetail", component: PicDetail}
+		{name: "picDetail", path: "/picDetail", component: PicDetail},
+		{name: "goodList", path: "/goodList", component: GoodList},
+		{name: "goodsDetail", path: "/goodsDetail/:goodsId", component: GoodsDetail},
+		{name: "proComment", path: "/proComment/:goodsId", component: ProComment},
 	]
 });
 
@@ -58,11 +71,16 @@ Vue.component("my-swipe", MySwipe);
 import NavBar from "./components/common/navBar.vue";
 Vue.component("nav-bar", NavBar);
 
+//评价栏组件
+import Comment from "./components/common/comment.vue";
+Vue.component("comment", Comment);
+
 //注册时间格式过滤器momentjs插件
 import Moment from "moment";
 Vue.filter("timeTransform", (value) => {
 	return Moment(value).format("YYYY-MM-DD hh:mm:ss");
 });
+
 
 //使用axios拦截器设定loading图案
 Axios.interceptors.request.use(function (config) {

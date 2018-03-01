@@ -9,9 +9,9 @@
 	            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'picShare'}">
 	                    <span class="mui-icon mui-icon-email"><span class="mui-badge" v-show="false">5</span></span>
 	                    <div class="mui-media-body">图文分享</div></router-link></li>
-	            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+	            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'goodList'}">
 	                    <span class="mui-icon mui-icon-chatbubble"></span>
-	                    <div class="mui-media-body">商品展示</div></a></li>
+	                    <div class="mui-media-body">商品展示</div></router-link></li>
 	            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
 	                    <span class="mui-icon mui-icon-location"></span>
 	                    <div class="mui-media-body">留言反馈</div></a></li>

@@ -1,6 +1,6 @@
 <template>
     <div class="tmpl">
-    <nav-bar newsTitle="新闻详情"></nav-bar>
+    <nav-bar :newsTitle="newsTitle"></nav-bar>
         <div class="news-title">
             <p>{{content.title}}</p>
             <div>
@@ -16,7 +16,8 @@
 export default {
     data(){
         return {
-            content: {}
+            content: {},
+            newsTitle: this.$route.params.barTitle
         }
     },
     created(){

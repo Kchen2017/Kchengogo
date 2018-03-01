@@ -5,7 +5,7 @@
         <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom"  :bottom-all-loaded="bottomAllLoaded" :auto-fill="isAutoFill" @bottom-status-change="handleBottomChange" ref="loadmore">
             <ul class="mui-table-view" >
                 <li class="mui-table-view-cell mui-media" v-for="(list, index) in lists" :key="index">
-                    <router-link :to="{name: 'newsDetail', params: {newsId: index}}">
+                    <router-link :to="{name: 'newsDetail', params: {newsId: index, barTitle: '新闻详情'}}">
                         <img class="mui-media-object mui-pull-left"  v-lazy="list.images.small">
                         <div class="mui-media-body">
                             <span v-text="list.title"></span>

@@ -10,11 +10,11 @@
 				<span class="mui-tab-label">首页</span>
 			</router-link>
 			<router-link class="mui-tab-item"  :to="{name: 'vip'}">
-				<span class="mui-icon icon-viphuiyuanhuangguan"><span class="mui-badge" v-show="false">9</span></span>
+				<span class="mui-icon icon-viphuiyuanhuangguan"></span>
 				<span class="mui-tab-label">VIP</span>
 			</router-link>
 			<router-link class="mui-tab-item"  :to="{name: 'shoppingCart'}">
-				<span class="mui-icon icon-weibiao45124"></span>
+				<span class="mui-icon icon-weibiao45124"><span class="mui-badge" >{{proNum}}</span></span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
 			<router-link class="mui-tab-item"  :to="{name: 'search'}">
@@ -30,7 +30,7 @@ import VueBus from "./components/common/vueBus.js";
 export default {
 	data(){
 		return {
-			
+			proNum: 0
 		}
 	},
 	mounted(){
@@ -38,6 +38,13 @@ export default {
 		VueBus.$on("getNavHeight", fn => {
 			console.log(this, "app");
 			fn(this.$refs.nav.getBoundingClientRect().height);
+		});
+
+		VueBus.$on("addPro", num => {
+			setTimeout(() => {
+				this.proNum += num;
+			}, 1000)
+			
 		})
 	}
 }
